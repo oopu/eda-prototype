@@ -1,0 +1,6 @@
+name: eda-prototype
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A generic prototype for a primarily event-driven platform based on AWS using serverless technologies.
