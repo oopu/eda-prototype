@@ -1,6 +1,7 @@
 import pulumi
 
-from util.autotagging import register_auto_tags
+import fixtures
+from utils.autotagging import register_auto_tags
 
 # Automatically inject tags in subsequent resources based on the project and stack name
 config = pulumi.Config()
@@ -9,5 +10,5 @@ register_auto_tags({
     "user:Stack": pulumi.get_stack()
 })
 
-# Set up fixtures
-import fixture
+# Set up fixtures.
+fixtures.setup_all()
