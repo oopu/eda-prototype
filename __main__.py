@@ -2,6 +2,14 @@ import json
 import pulumi
 import pulumi_aws as aws
 import pulumi_aws_apigateway as apigateway
+from util.autotagging import register_auto_tags
+
+# Automatically inject tags based on the project and stack name
+config = pulumi.Config()
+register_auto_tags({
+    "user:Project": pulumi.get_project(),
+    "user:Stack": pulumi.get_stack()
+})
 
 # An execution role to use for the Lambda function
 role = aws.iam.Role("role", 
