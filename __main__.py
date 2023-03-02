@@ -1,14 +1,18 @@
+'''
+Entrypoint for the application and Pulumi.
+Most of the action is under packages. See /ttc
+'''
 import pulumi
-
-import fixtures
+import ttc
 from utils.autotagging import register_auto_tags
 
-# Automatically inject tags in subsequent resources based on the project and stack name
+# Automatically inject tags in subsequent resources based on
+#  the project and stack name
 config = pulumi.Config()
 register_auto_tags({
-    "user:Project": pulumi.get_project(),
-    "user:Stack": pulumi.get_stack()
+    "company_name:Project": pulumi.get_project(),
+    "company_name:Stack": pulumi.get_stack()
 })
 
 # Set up fixtures.
-fixtures.setup_all()
+ttc.setup()
